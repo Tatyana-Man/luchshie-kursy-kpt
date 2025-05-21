@@ -145,5 +145,28 @@
         <p><a href="/politika.html">Политика конфиденциальности</a></p>
     </footer>
 
+    <div id="cookie-banner" style="position: fixed; bottom: 0; width: 100%; background: #f9f9f9; color: #333; text-align: center; padding: 15px; box-shadow: 0 -2px 5px rgba(0,0,0,0.1); z-index: 1000;">
+  <p style="margin: 0; font-size: 14px;">
+    Сайт использует сервис веб-аналитики Яндекс Метрика с помощью технологии «cookie», чтобы пользоваться сайтом было удобнее.
+    Вы можете запретить обработку cookies в настройках браузера.
+    <a href="/politika.html" style="color: #5c8d7b; text-decoration: underline;">Подробнее в Политике</a>.
+    <button id="accept-cookies" style="margin-left: 15px; padding: 5px 10px; background-color: #5c8d7b; color: #fff; border: none; border-radius: 3px; cursor: pointer;">Я согласен</button>
+  </p>
+</div>
+<script>
+  // Скрываем баннер, если пользователь уже принял cookies
+  window.addEventListener('DOMContentLoaded', function () {
+    if (localStorage.getItem('cookieConsent') === 'true') {
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+  });
+
+  // При нажатии скрываем баннер и сохраняем согласие
+  document.getElementById('accept-cookies').addEventListener('click', function () {
+    document.getElementById('cookie-banner').style.display = 'none';
+    localStorage.setItem('cookieConsent', 'true');
+  });
+</script>
+
 </body>
 </html>
